@@ -21,6 +21,7 @@ import os
 import zipfile
 
 import six
+from arestor.client import arestor_client
 
 from argus import config as argus_config
 from argus.config_generator.windows import cb_init as cbinit_config
@@ -42,6 +43,14 @@ _CBINIT_TARGET_LOCATION = r"C:\cloudbaseinit"
 
 class CloudbaseinitRecipe(base.BaseCloudbaseinitRecipe):
     """Recipe for preparing a Windows instance."""
+
+    def __init__(self, backend):
+        super(CloudbaseinitRecipe, self).__init__(backend)
+        self._arestor_client = arestor_client.ArestorClient(
+            base_url=CONFIG.arestor.base_url,
+            api_key=CONFIG.arestor.api_key,
+            secret=CONFIG.arestor.secret,
+            client_id="instance-" + backend.instance_server()['name'][:15].lower())
 
     def wait_for_boot_completion(self):
         LOG.info("Waiting for first boot completion...")
@@ -254,6 +263,32 @@ class CloudbaseinitRecipe(base.BaseCloudbaseinitRecipe):
 
         LOG.debug("Wait for the Cloudbase-Init service to stop ...")
         self._backend.remote_client.manager.wait_cbinit_service()
+
+    def create_mock_metadata(self, service_type):
+        """Create the mocked meta-data."""
+        instance_server = self._backend.instance_server()
+        name = instance_server["name"]
+        # HACK(mmicu): for Openstack we have the service_type set to http
+        self._arestor_client.set_namespace("openstack")
+        self._arestor_client.set_name(name)
+        self._arestor_client.set_project_id("project-{}".format(name))
+        self._arestor_client.set_launch_index("0")
+        self._arestor_client.set_availability_zone(
+            instance_server.get("OS-EXT-AZ:availability_zone",
+                                "az-{}".format(name)))
+        self._arestor_client.set_random_seed("random-seed-{}".format(name))
+        self._arestor_client.set_uuid(instance_server["id"])
+        self._arestor_client.set_uuid(name.lower()[:15])
+
+        # HACK(mmicu): for Openstack we have the service_type set to http
+        self._cbinit_conf.set_conf_value(
+            name="metadata_base_url",
+            value=self._arestor_client.get_url(),
+            section="openstack")
+
+    def delete_mock_metadata(self):
+        """Delete the mocked meta-data."""
+        self._arestor_client.delete_all_data()
 
     def prepare_cbinit_config(self, service_type):
         """Prepare the Cloudbase-Init config."""

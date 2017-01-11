@@ -100,6 +100,11 @@ class BaseCloudbaseinitRecipe(base.BaseRecipe):
         """Do whatever is necessary to replace the code for Cloudbase-Init."""
 
     @abc.abstractmethod
+    def create_mock_metadata(self):
+        """Create the mocked meta-data."""
+        pass
+
+    @abc.abstractmethod
     def prepare_cbinit_config(self, service_type):
         """Prepare the config objects.
 
@@ -117,6 +122,11 @@ class BaseCloudbaseinitRecipe(base.BaseRecipe):
     @abc.abstractmethod
     def get_cb_init_logs(self):
         """Get the Cloudbase-init logs from the instance."""
+        pass
+
+    @abc.abstractmethod
+    def delete_mock_metadata(self):
+        """Delete the mocked meta-data."""
         pass
 
     def prepare(self, service_type=None, **kwargs):
@@ -138,6 +148,7 @@ class BaseCloudbaseinitRecipe(base.BaseRecipe):
         self.replace_install()
         self.replace_code()
         self.prepare_cbinit_config(service_type)
+        self.create_mock_metadata(service_type)
         self.inject_cbinit_config()
         self.pre_sysprep()
         if CONFIG.argus.pause:
@@ -147,3 +158,4 @@ class BaseCloudbaseinitRecipe(base.BaseRecipe):
         self.wait_cbinit_finalization()
         LOG.info("Finished preparing instance.")
         self.get_cb_init_logs()
+        self.delete_mock_metadata()
