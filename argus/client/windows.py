@@ -41,7 +41,7 @@ from argus import util
 LOG = argus_log.LOG
 CONFIG = argus_config.CONFIG
 CODEPAGE_UTF8 = 65001
-THREADS = 1
+THREADS = 12
 
 
 def _encode(data):

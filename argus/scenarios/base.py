@@ -152,7 +152,7 @@ class BaseScenario(unittest.TestCase):
 
             cls.introspection = cls.introspection_type(
                 cls.backend.remote_client)
-        except Exception as exc:
+        except (KeyboardInterrupt, Exception) as exc:
             LOG.exception("Building scenario %r failed with %s",
                           cls.__name__, exc)
             cls.tearDownClass()
