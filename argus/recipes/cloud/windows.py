@@ -16,6 +16,7 @@
 """Windows Cloudbase-Init recipes."""
 
 import base64
+import json
 import ntpath
 import os
 import zipfile
@@ -50,7 +51,7 @@ class CloudbaseinitRecipe(base.BaseCloudbaseinitRecipe):
             base_url=CONFIG.arestor.base_url,
             api_key=CONFIG.arestor.api_key,
             secret=CONFIG.arestor.secret,
-            client_id="instance-" + backend.instance_server()['name'][:15].lower())
+            client_id="instance-" + backend.instance_server()['name'])
 
     def wait_for_boot_completion(self):
         LOG.info("Waiting for first boot completion...")
@@ -278,13 +279,20 @@ class CloudbaseinitRecipe(base.BaseCloudbaseinitRecipe):
                                 "az-{}".format(name)))
         self._arestor_client.set_random_seed("random-seed-{}".format(name))
         self._arestor_client.set_uuid(instance_server["id"])
-        self._arestor_client.set_uuid(name.lower()[:15])
+        self._arestor_client.set_uuid(name.lower())
+        cert_keys = [{
+                    "name": "argus-cert-key",
+                    "type": "x509",
+                    "data": util.get_certificate()
+                }]
+        metadata_keys = {
+                    "name" : "argus_key",
+                    "type" : "ssh",
+                    "keyname": util.get_public_keys()[0],
+                }
 
-        # HACK(mmicu): for Openstack we have the service_type set to http
-        self._cbinit_conf.set_conf_value(
-            name="metadata_base_url",
-            value=self._arestor_client.get_url(),
-            section="openstack")
+        self._arestor_client.set_public_keys(json.dumps(metadata_keys),json.dumps(cert_keys))
+
 
     def delete_mock_metadata(self):
         """Delete the mocked meta-data."""
@@ -318,6 +326,10 @@ class CloudbaseinitRecipe(base.BaseCloudbaseinitRecipe):
         self._cbinit_conf.set_conf_value(
             name="check_latest_version",
             value=CONFIG.cloudbaseinit.check_latest_version)
+        self._cbinit_conf.set_conf_value(
+            name="metadata_base_url",
+            value=self._arestor_client.get_url(),
+            section="openstack")
 
         self._backend.remote_client.manager.prepare_config(
             self._cbinit_conf, self._cbinit_unattend_conf)

@@ -29,13 +29,13 @@ class ArestorOptions(config_base.Options):
         self._options = [
             cfg.StrOpt(
                 "base_url",
-                default="http://0.0.0.0:8080",
+                default="http://10.10.1.1:8080",
                 help="The base URL for this service"),
             cfg.StrOpt(
-                "api_key", default=None,
+                "api_key", default="6b895ce8df0311e696ab248a07773d30",
                 help="The api key for the arestor user."),
             cfg.StrOpt(
-                "secret", default=None,
+                "secret", default="c44301e79ba3821a5eac14bee07f3ea9fbd4aaac4397375f937cd255ae22ecee",
                 help="The secret for the arestor user"),
         ]
 
