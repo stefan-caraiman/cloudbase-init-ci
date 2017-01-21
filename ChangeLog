@@ -1,0 +1,1006 @@
+CHANGES
+=======
+
+* Add ssh keys to the mocked metadata
+* update
+* Parameterize the msi URL and repository location
+* Improve sysprep script
+* Fix open_shell
+* Add Test-path condition in powershell code blocks
+* Improve the unzip logic
+* [WiP] PoC for arestor integration
+* Fix test executable
+* Add a basic CLI
+* Remove the deactivation of the reset service password
+* Fixes the CloudbaseinitWinrmRecipe
+* Fixes resources scripts for Nano
+* Adds support for Windows 7
+* Add the ability to create scenario specific log files
+* Add the ability to log from a specific scenario
+* Removes the double activate option from the config
+* Adds a few more verbose logging messages
+* Adds option to archive files before winrm transfer
+* Restructure the running of powershell commands
+* Added unit tests for WindowsServer2008ActionManager class
+* Added unit tests for Action Manager functions
+* Added unit tests for WindowsNanoActionManager class
+* Added an upper Timeout option on the Client
+* Fix the `get_windows_action_manager` method
+* Overwrite `_execute_resource_script` for Nano
+* Finish Action Manager for Windows Nano
+* Avoid halting problem on Windows Nano
+* Added consistency in `write_file` and `copy_file`
+* Restructure `install_cbinit` to only run the script
+* Add configurable option for logging file path
+* Adds Nano support for the timezone getter
+* Fix PEP8 nits
+* Fix Travis jobs
+* Adds support for Windows 2008/2008R2
+* Fix typos
+* Improve the way of testing the framework
+* Improve the replace_install method
+* Add groups for metadataservices
+* Restructure the conf patching for metadata services
+* Improve the set_config_value method
+* Improves Cloudbase-Init installation logic
+* Replace Get-WmiObject and Get-CimInstance calls
+* Added new feature in Action Manager
+* Change the custom config parser with the oslo.config
+* Added unit tests for WindowsActionManager class
+* Added `test_utils` module
+* Add test to check if swap is enabled
+* Improve `test_get_console_output` test
+* Fix issues regarding the StaticNetwork scenario
+* Fix Action Manager for Windows Server 2012
+* Restructure the git_clone logic
+* Fix coding style issues
+* Fixed Windows paths handling
+* Add test and scenario for long hostnames
+* Restructure logs
+* Implement download action for Nano Server
+* Revert client.copy_file to use util.CMD
+* Moved OS specific preparation
+* Added new features in Action manager
+* Set the MTU for the underlying instance
+* Fix the issues related to APIManager.networks_client
+* Set default service_type to HTTP
+* Fix local scripts path
+* Change the read_file behaviour
+* Replace magic strings with constants
+* Eliminate the need for service_type in install
+* Force base recipe to handle config generation
+* Modified all recipes to generate the config
+* Added Cloudbase-Init config object
+* Added BaseWindowsConfig
+* Added BaseConfig
+* Added base config files
+* Restructure the licensing logic
+* Add getter method for MTU in the APIManager
+* Ignore the certificate when connecting via HTTPS
+* Improve the test_mtu logic
+* Added new features in Action Manager
+* Improve the action manager functionalities
+* Fix copy_file method in the client
+* Get OSArchitecture using Get-CimInstance
+* We only need to compare the 1 meaning True
+* Fix path in _is_nanoserver function
+* Use Get-CimInstance to get the product type
+* Refactor wait_boot_completion
+* Change the port for the mock service
+* Improve heat cleanup
+* Use the new naming scheme for tempest and heat
+* Added exception argus exception for permission denied
+* Updated import source for credentials
+* Fix bug in Recipe for already sys-prepared images
+* Sets codepage to UTF8 (65001) for Nano server
+* Fix resources link
+* Modified the introspect to use the new Action Manager when possible
+* Modified the tests to use the new Action Manager when possible
+* Modified the windows cloud recipe to use the new manager on the Client
+* Make the Windows Client to create an Action Manager when it's constructed
+* Made factory for OS specific action manager
+* Add OS specific Action Managers
+* Added Windows Versions in util.py
+* Created Windows base class for action_manager
+* Added BAT script type to util.py
+* Created base class for action_manager
+* Stop considering an error if stderr is polluted
+* Add log messages for untracked exceptions
+* Modified all tests to use the new Client
+* Modified recipes to use the new Client
+* Modified introspection to use the new Client
+* Added logic to handle Powershell Scripts and Commands
+* Modified the Client to accept command_type parameter
+* Added exceptions for normal errors after sysprep (#6)
+* Update pbr semantic version
+* Update the behaviour of install_cbinit
+* Fix typos and add missing parameter (#4)
+* Add documentation for creating windows nano server images for argus-ci
+* Ensure that the received image info are available
+* Update the Argus-Ci config file
+* Escape paths when testing their existence
+* Setup winrm for the remote client execution
+* Remove unnecessary image recipe step/wait
+* Special recipe for images with cloudbase-init
+* Remove unused CONF option `expected_plugins_count`
+* Use cloud scenarios under CI tests
+* Remove unnecessary extra path formatting
+* Update subnets neutron related API calls
+* Don't send null keys when creating the server
+* Fix the link to the rtd badge
+* Use a readthedocs badge and remove obsolete details from the README
+* Fix the link to the rtd badge
+* Use a readthedocs badge and remove obsolete details from the README
+
+0.5.0
+-----
+
+* Prepare 0.5.0 release
+* Add a short intro into writing custom backends, recipes and how to use argus in general
+* Return the image key in get_image_ref in order to get the real content
+* Let username and password keywords only in CloudBackend.get_remot_client
+* Move get_remote_client and remote_client into base backend class
+* Remove trailing whitespace
+* Update the get_console_output API call
+* Add missing docstrings
+* Return the server key from the result of show_server
+* Use the new name for isolated_creds, including the new private _creds object, which is not public anymore, unfortunately
+* Use hasattr to make the check for _service_manager more robust
+* Index the server when retrieving the id of the newly created instance
+* Use the new name of the clear_isolated_creds method
+* Use the new name of the get_isolated_creds
+* Verify that the service_manager was created before using it
+* Add documentation for the new client submodule
+* Move base client into its own modules and merge WinRemoteClient with the default Windows implementation
+* Add the new modules into the documentation
+* Move behaviour specific to cloudbaseinit testing from recipe and scenario to specific classes
+* Make BaseInstanceIntrospection a true base class for introspection, without depending on cloudbaseinit
+* Add links for the projects mentioned in the index doc
+* Try with the root instead
+* Try to insert the path
+* Add draft documentation
+* Make the implementation of cached_property more robust, by not calculating the value if the instance wasn't created
+* Remove the tests since they are obsolete and useless
+* Simplify the function a little bit
+* Export the networks_client API into the API manager
+* Update create_server API for the new tempest compatibility
+* Update to the latest tempest changes
+* Add get_image_by_ref to Heat backend
+* Import the subunit2html script
+* Don't print the logs at the stdout, since we'll need it for subunit. Instead log only in the log file
+* Ignore the warnings that are emitted by cherrypy, since they screw the subunit result and they aren't useful to us
+* Change the location of the tests in the testr command file
+* Move tests.py into its own folder, which should be used by the CI gates
+* Remove plugins counting test and introspection
+* Move the mocked service instantiation back into prepare_instance and tearDownClass
+* userdata is a string, not a function
+* fixed call to prepare()
+* fix for test_password_set_on_rescue
+* Put the main code into a main function
+* Fix line endings
+* Add a log message when the scenario is executed
+* Skip scenarios dependent on availability zones
+* Don't encode the userdata to base64, let the tempest backend to do that
+* Remove the devstack stopping script, since it's not used (was used by environments)
+* Add special test for Heat userdata
+* Add psutil as a dependency, since it's used by the stop_devstack script
+* Add missing capability, instance_server, to the heat backend
+* Configure the DNS name servers for the Heat backend
+* Wait for the floating ip to be deleted before destroying the credentials
+* Increate the readiness timeout of Heat resources
+* Wait a little while for Heat resources to be completed
+* Delete the floating ip before deleting the credentials
+* Remove pep8 from our testing process, since we're already using pylint, no need to be redundant
+* Fix a bug where the resource name we were looking for was reassigned all the time to another object
+* Add a floating_ip abstract method to the cloud backends, which is implemented by each backend
+* Disable line too long error for PEP 8, since we're not interested in 79 limit character
+* Move parts general to all backends into the backend base class
+* Disable pylint false positives
+* Make is_final a public API
+* Promote _escape_path to a public function, since it's used by other modules as well
+* Use consistent line endings in the file
+* Remove obsolete options
+* Access the image information directly from the configuration object
+* Get the name from the result of get_image_meta
+* Add a scenario which uses the Heat backend
+* Merge
+* Pass the userdata to the template
+* Add a first draft of the Heat backend
+* fixed read image password from conf
+* Add a client module for interacting with the heat API
+* Add create_keypair method to APIManager class
+* Move API exported objects from TempestBackend to argus.tempest.backend.manager
+* Create CloudBackend from BaseBackend
+* added scenarios that use availability_zone
+* Implemented multihost deployments
+* added missing scenario
+* replace run_remote_command with run_command
+* Don't encode the userdata if it doesn't exist
+* Merge
+* Use parens for the print statement in order to work for Python 3 as well
+* Encode the user data before passing it to the backend
+* Save the instance's output only after the recipe finished executing
+* Move function creation code into a new helper function
+* Document the base backend class and make its parameters optional
+* Use run_command instead of _execute
+* Raise error if cbinit dir is not found
+* install cbinit was called twice because of merge
+* Readd support for pausing before sysprep
+* Emit an error when a scenario fails to build properly
+* Emit a warning if a class is not final
+* Create a server with the scenario's name, not with the backend's name. This helps introspection
+* Fix the testr command in .testr.conf
+* Fix merge artefacts
+* tempest compatibility
+* fixed two tempest related issues
+* fixed bug in metaclass and tempest issue
+* Put a __main__ guard in the code that patches CloudStack scenarios
+* fixed inheritance of TestPowershellMultipart
+* Fix several docstring/documentation typos
+* Catch a more generic error
+* Catch socket.error as well, since it sometimes leak instead of winrm exceptions
+* Use a __main__ guard for the new shell code
+* py3 compatibility
+* fix change size while iterating bug
+* check each nic
+* check of osversion in test_static_network
+* changed order of plugins
+* change sysprep timeout to 10 minutes
+* for testing purpose
+* use run_command so that we can treat specific exceptions differently
+* wait 10 minutes for sysprep
+* removed dummy command
+* only catch expected exception
+* add dummy command to sysprep
+* added timeout for sysprep.ps1
+* add dummy command to sysprep
+* Check if a scenario class is final or not. A class is final if all the required attributes were set to something else than None
+* added timeout for sysprep.ps1
+* fixed call to run_command_with_retry
+* fixed call to run_command_until_condition
+* Try to create the output directory before running tests
+* removed recursion
+* Don't use a global CONF
+* Merge
+* Adapt argus to the newest tempest API
+* Support for tempest
+* Call tearDownClass manually if setUpClass fails
+* Don't use a global configuration object, instead, passing in the constructor for recipes, backends and introspection
+* renamed scenarios to tests so that testr will notice it
+* Pass the userdata and the metadata to backend's constructor
+* Add the license header where it's missing
+* Add a first draft of the converted scenarios from the previous argus.conf
+* Remove comment, since the new implementation of requires_service works properly with regard to service_type
+* Remove multiple classes and functions that are obsoleted: with_retry, ConfigurationPatcher and others
+* Remove the _Option class, since it's not used anymore
+* Remove the missing plugin scenario, because it's already handled by cloudbaseinit's tests
+* make scenariometa work with requires_service decorator
+* updated requires_service decorator
+* fixed 3 tests in TestBaseSmoke
+* changed default build to Beta
+* pass service_type from scenario to recipe
+* pass service_type from scenario to recipe
+* read output_directory from conf in save_instance_output
+* fixed type with openstack namedtuple
+* fixed type when parsing image_username from config
+* added service_type attribute to scenarios
+* read config from working dir first
+* updated tests to read from conf
+* removed some hardcoded things. started reading from the conf
+* updated configuration parser to reflect the new config file
+* Changed run_command_until_condition not to ignore retry_count param
+* Drop environment.py, since we'll use multihost deployment for different configurations
+* Drop shell.py as well as the argus command, since they are obsoleted by testr or other test runners
+* Drop runner.py, since it's obsoleted by testr
+* Drop parse_cli since it's not used anymore
+* Add comment regarding service_type
+* Take the build and the arch options from the configuration file
+* Remove redundant file
+* Implement a prepare_instance method for the base scenario class
+* Move the scenario base class and scenarios mixins (from the backend) into argus.scenarios
+* Change some scenarios from argus.backends.tempest.cloud to backends
+* Move tempest specific backends to argus.backends.tempest folder
+* Remove the base scenario, improve the tempest backend instead
+* Remove redundant file
+* Pass the configuration object to the test cases
+* Remove tests which aren't actually used
+* Document ScenarioMeta
+* Document the use of types.FunctionType
+* Pass a configuration object to the recipe
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* imports
+* using old backend
+* hardcoded config file
+* added a tempest scenario
+* worked on tempest backend
+* moved some files
+* implemented ns collision
+* updated .testr.conf
+* base classes
+* added cleanup to backends
+* Work on backend, introspecion and recipes
+* started working on BaseTestCase
+* Removed params that weren't needed
+* Created backends skeleton
+* Add a draft doc for building argus images
+* Use reboot_server instead of reboot in tempest API
+* Simplify the check for the mtu lookup
+* Fix scheduled task recipe docstring
+* Pass the verbose flag to netsh
+* Implement another two phase check with two files
+* Do a two phase wait on the cloudbaseinit service: once check if it started and second, check if the service stopped after it was started
+* Write the file directly into C:
+* Prepend powershell onto commond
+* Patch the installation of cloudbaseinit to create a file when finishing
+* Verify that the OS version is greater than 6.0 when testing the w32time's triggers
+* Do a lookup over the networks in order to find the proper Local Area connection
+* Extract security group rules' ID accordingly
+* fix for fip and secgroup
+* fix for tempest compatibility
+* scenario runner catch broader exceptions
+* Replace the use of Get-NetIPConfiguration, since it does not exist on all supported OSes. Parse manually the information instead
+* Fix the name of the scheduled task
+* Fallback to a scheduled task deployment if the initial cloudbaseinit installation fails
+* Call tearDownClass manually if setUpClass fails
+* Don't use a global configuration object, instead, passing in the constructor for recipes, backends and introspection
+* renamed scenarios to tests so that testr will notice it
+* Pass the userdata and the metadata to backend's constructor
+* Add the license header where it's missing
+* Add a first draft of the converted scenarios from the previous argus.conf
+* Remove comment, since the new implementation of requires_service works properly with regard to service_type
+* Remove multiple classes and functions that are obsoleted: with_retry, ConfigurationPatcher and others
+* Remove the _Option class, since it's not used anymore
+* Remove the missing plugin scenario, because it's already handled by cloudbaseinit's tests
+* make scenariometa work with requires_service decorator
+* updated requires_service decorator
+* fixed 3 tests in TestBaseSmoke
+* changed default build to Beta
+* pass service_type from scenario to recipe
+* pass service_type from scenario to recipe
+* read output_directory from conf in save_instance_output
+* fixed type with openstack namedtuple
+* fixed type when parsing image_username from config
+* added service_type attribute to scenarios
+* read config from working dir first
+* Adapt argus to the newest tempest API
+* updated tests to read from conf
+* removed some hardcoded things. started reading from the conf
+* updated configuration parser to reflect the new config file
+* Drop environment.py, since we'll use multihost deployment for different configurations
+* Drop shell.py as well as the argus command, since they are obsoleted by testr or other test runners
+* Drop runner.py, since it's obsoleted by testr
+* Drop parse_cli since it's not used anymore
+* Add comment regarding service_type
+* Take the build and the arch options from the configuration file
+* Remove redundant file
+* Implement a prepare_instance method for the base scenario class
+* Move the scenario base class and scenarios mixins (from the backend) into argus.scenarios
+* Change some scenarios from argus.backends.tempest.cloud to backends
+* Move tempest specific backends to argus.backends.tempest folder
+* Remove the base scenario, improve the tempest backend instead
+* Remove redundant file
+* Pass the configuration object to the test cases
+* Remove tests which aren't actually used
+* Document ScenarioMeta
+* Document the use of types.FunctionType
+* Pass a configuration object to the recipe
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* bug fixes
+* imports
+* using old backend
+* hardcoded config file
+* added a tempest scenario
+* worked on tempest backend
+* Make pep8.py happy
+* added test for userdata
+* added shellscript to cloudconfig
+* Create the scripts folder in the installation script, since it's expected to be there for all tests
+* Remove tests that were driven from the installation script
+* Remove useless code from the installation script. Use more sane defaults
+* moved some files
+* implemented ns collision
+* updated .testr.conf
+* base classes
+* Try to escape the damn path
+* Fix the powershell command for cloudstack patching
+* Try with dunder getattribute instead, since dunder getattr and setattr are reserved for mock
+* Install mock before patching cloudstack
+* Ignore errors when moving shell.py to _shell.py for testing purposes
+* Forgot to add the patch import
+* Escape the file argument for the patch_cloudstack script
+* Fix syntax error
+* Patch the cloudbaseinit.shell file in order to use our CloudStack server
+* Ignore the output from the openstack utility command
+* Use the openstack command utility instead of calling tempest API (unstable API and fails randomly)
+* Stop if no screen was found
+* Add a script for stopping nicely the devstack environment
+* fixed calls to clients
+* Removed the need to call source before running argus
+* added cleanup to backends
+* Work on backend, introspecion and recipes
+* started working on BaseTestCase
+* Removed params that weren't needed
+* Created backends skeleton
+* Added TestSetTimezone to scenario
+* Tempest compatibility issue
+* Fix for compatibility with the latest version of Tempest
+* fixed userdata files
+* merged
+* added scenario for testing userdata set hostname
+* added scenario for testing userdata set hostname
+* fixed parsing commands
+* Pass the -r flag to pip
+* fixed env namedtuple
+* Run pip over the new requirements file from the tested patch
+* Use consistent and platform related path joins
+* Removed git installation code from argus
+* further refactoring
+* Remove the specialize test, since it should be handled by a normal unittest
+* Add CLI option for installer templating
+* Removed hardcoded reference to systemctl and other fixes
+* Don't mark the failing tests as executed in the context of failing scenarios
+* Fix wrong member access
+* Mark scenarios which failed with ArgusError as failed
+* Don't crash if the userdata scripts already ran
+* Fixed exception name
+* Made start_commands and stop_commands optional
+* Added RDO environments in argus.conf
+* Test local scripts return codes
+* Fixed _start_environment
+* Added support for working with RDO based Openstack deployments
+* Added support for working with RDO based Openstack deployments
+* Fix the name of the test
+* Enable the hostname test for cloud-config plugins
+* Disable first_logon_behaviour for testing purposes
+* Remove remnants of a removed test
+* Use CLI aspects similar to positional arguments
+* Remove the certificate leaking test, since it is useless
+* Add test for testing the next logon behaviour
+* Allow the password for the created user to be supplied at the command line
+* Change the setuserpassword plugin location to its new value
+* Implemented feature for testing if the hostname was set correctly
+* Use a multipart format for testing the certificate leak, since it is printed only in this situation
+* Test only that the output is not empty, we're not interested in the number of lines
+* Change a test to use the new instance_output API
+* Test that certificates don't leak into the log
+* instance_output was changed to return the whole log if it's possible, moving this logic from save_instance_output to instance_output()
+* Fix the string which should be verified inside the traceback string
+* Fix a typo, the wrong file was sent into the instance
+* Patch the mtu plugin to fail when executed, in order to properly test specialize errors
+* Delete a service instead of a plugin for testing the specialize part, since we don't fail on missing plugins anymore
+* Run tests using diffrent builds or architectures
+* Changed version from 0.4.0 to 0.4.1
+* Send a proper certificate as MaaS metadata
+
+0.4
+---
+
+* Bumping version to 0.4
+* Fix public keys EOL consistency
+* Test multiple public keys and x509 certificates
+* Proper recipes super method calls
+* Revert extraneous change, saved_password is used
+* Make sure that we are looking for errors in the logs
+* Wait for cloudbaseinit finalization before testing that the next password change steps
+* Get image details using the right API method
+* Add v6 support when testing network configuration
+* Passed the wrong argument to function
+* Test that a missing plugin doesn't lead to a traceback
+* Remove monkey patching under DNS setting
+* Update pbr semantic version
+* Fix the path to the test class
+* Add a new test for the WinRM certificate authentication
+* The created user must be in the Administrators group for WinRM to work
+* Update the password used by create_user.ps1
+* Add a .pem certificate which will be used for configuring the WinRM certificate authentication
+* Use the metadata password test, since nobody posts the password from the instance in this scenario
+* Change the recipe to actually create the Admin user and use it instead of the CI user
+* Fix the previous commit, the CI admin user was needed
+* Use the CI admin user for the WinRM auth test
+* Pass the password to the instance
+* Fix the name of the test
+* Merge
+* Fix the name of the plugin
+* Use the WinRM test recipe for the WinRM scenario
+* Fix the name of the test
+* Add a test which verifies that WinRM can run independently of CreateUser
+* Add a function for changing a cloudbaseinit config option
+* Move the skip decorator over to the function definitions
+* Split up the password tests
+* Save the instance output after each reboot
+* Use a more complex password for the Cloudstack update password test
+* Fix the name of the plugin
+* Merge
+* Use the WinRM test recipe for the WinRM scenario
+* Fix the name of the test
+* Add a test which verifies that WinRM can run independently of CreateUser
+* Add a function for changing a cloudbaseinit config option
+* Fix a couple of nitpicks:
+* Fix the name of the test
+* Add a test which verifies that WinRM can run independently of CreateUser
+* Add a function for changing a cloudbaseinit config option
+* Make pylint happy
+* Add test for update password feature
+* Move cloudbaseinit specific options to [cloudbaseinit] section
+* Do tempest related imports with excepthook keep
+* Better static network configuration testing
+* Execute with retry all of the commands
+* Use some sane values for retry count and retry delay
+* Fix network interfaces details parsing
+* Fix instance output log retrieval
+* Test cb-init networkconfig plugin
+* Pass the timezone userdata in a multipart context
+* Strip newlines from the returned timezone
+* Add a test for the timezone plugin
+* Execute remote commands with retry (by default)
+* tempest.common.log moved to oslo.log, resetting the excepthook should be enough
+* Use a 'Test' prefix for all tests
+* Keep a standard between entities naming
+* Add missing entries to __all__
+* Replace tempest.common.data_utils.rand_name with our own implementation of rand_name
+* Remove the ProxyLogger, since it's obsolete (the logger doesn't use CLI commands anymore)
+* Unpack all the scenarios using chain.from_iterable before passing them to the Runner
+* Use a list comprehension, since we need to pass the image as a keyword argument
+* Correct name for the user_data parameter
+* Use the proper name of the image
+* Remove merge artefact
+* Merge
+* Add support for multiple images per scenario
+* Move the images section near the scenarios
+* Update the name of the image to reflect reality
+* Fix up the tests for argus itself and run them with tox
+* Use a specific command for stopping the devstack screen
+* Drop the customization of logging options
+* Add missing import
+* Move the images section near the scenarios
+* Update the name of the image to reflect reality
+* Exit with a positive return code, if there were test failures
+
+0.3
+---
+
+* Bump version
+* Better tests formatting
+* Test x86 powershell userdata
+* Use TestSmoke for generic_smoke scenario as well
+* Use the full smoke test suite for scenario_user_already_created_windows
+* Don't fail if syspre.ps1 fails, it's expected to fail
+* Block the sysprep script until the OS is ready to do a restart.:
+* Remove wait_reboot, since it's not what we are needing
+* Wait for the instance to be rebooted after sysprep
+* Make common a script module and use the correct import form
+* The parameters to Set-Service and Set-WindowsActivation were wrong
+* Make sure to catch BadStatusLine
+* Look for an Authorization header instead and see if it has the required parts
+* operation can be None
+* Expose the meta-data API
+* Don't wrap the value for the tokens in quotes
+* Fix the qualified name
+* Add mock service for the Maas
+* Resource link normalization
+* Look for an Authorization header instead and see if it has the required parts
+* Fix header case bug in Cloudstack mock service
+* operation can be None
+* Expose the meta-data API
+* Best choose of Program Files directory
+* Don't wrap the value for the tokens in quotes
+* Fix the qualified name
+* Add mock service for the Maas
+* Refactor remote client execution model
+* Adapt unpacking to the new return type
+* Retry using `with_retry` decorator various calls
+* Use server method instead of attribute
+* Remove redundancy from the EC2 scenario
+* Mock EC2 metadata service
+* Move default userdata and metadata to the base scenario
+* Remove merge artefact
+* Add new API for obtaing some private data from scenario
+* Revert the previous commit
+* Return a formatted public key for the Cloudstack service
+* Use the text/plain mimetype for the public_keys api
+* Ignore PyCharm settings
+* Forgot to use the instance's userdata
+* Return the already decoded userdata from scenario
+* Move the encoding of the userdata earlier, in init
+* Do not fail if operation is not given
+* Properly escape the files when patching the cloudbase config
+* Move the pause right before sysprep and after pre_sysprep step
+* Try multiple times to stop the service
+* Incorrect member added to string
+* Add a special Powershell script for patching Cloudstack.py
+* Move the server starting code into a new function
+* Disable cherrypy logging
+* Remove an extra character
+* Remove an extra character
+* The port must be int
+* Use the proper port for the Cloudstack password manager
+* Cleanup the CloudStack recipe
+* Add code adjustment in Cloudstack mocked service
+* Add cherrypy to  requirements.txt
+* Use the proper port for EC2 metadata service
+* Add the proper service type for the cloudstack scenario
+* The cherrypy configuration requires an extra dictionary for configuring
+* Catch errors which can occur when the stop link is accessed
+* Add recipes for mocking services
+* Add scenario for testing Cloudstack metadata service
+* Cleanup the service recipes
+* Add recipes for mocking services
+* Finish the implementation of CloudstackPasswordManagerApp
+* Use processes instead of threads, since cherrypy doesn't like being run in multiple threads
+* Add the stop link to the base service app
+* Add basic service mocks
+* Service mocking sketch
+* Add support for in Set-Service for other types of metadata services
+* Remove the import of CONF
+* Remove trap_failure and its usages
+* Unpack the return value of console output
+* Speed up the copying/downloading process
+* Revert to explicit import of novaclient
+* Proper import of novaclient
+* Add missing requirement
+* Add option for installation files patch
+* Ignore top level import errors
+* Fix reference before assignment bug
+* Use str instead of repr when logging the configuration
+* Fix indentation error
+* Log what configuration is patched
+* Document the ConfigurationParser class
+* Rename the environment parameter to environment_preparer
+* Refactor DevstackEnvironmentPreparer
+* Return the value from _run
+* Wait for the API to be up and running
+* Use a different optionxform, since the default one lowercases
+* Wait for compute services to be up again
+* Fix the start commands for the DevStack
+* Fix the start command
+* Fix the parameter passing to the preparer
+* Refactor the parsing of environment elements
+* Fix name errors
+* Improve the coverage of the ConfigDrive suite
+* Pass the environment preparer to the scenario class
+* Add support for passing environment preparing configurations to scenarios
+* Refactor parse_config into ConfigurationParser
+* Add first draft of environment preparers
+* Better coherence for the scenarios
+* Pass the instance_output to the scenario constructor
+* Add support for grabbing the installation log
+* Fix the passing of parameters to function
+* Fix the passing of parameters to function
+* Cleanup Powershell code
+* Wait for the cloudbaseinit service to stop
+* Look in cloudbase-init-unattend.log for tracebacks
+* Revert with single response unpack
+* Test the specialize part
+* Fix return value unpack
+* Remove obsolete comment
+* Fix return value unpack
+* Keep a standard between error messages
+* Add execute commands until success method
+* Handle tempest API different versions
+* Refactor scenario inheritance syntax
+* Ignore PEP8 import error
+* Add support for inheriting scenarios in the scenario config
+* Revert to develop branch
+
+0.2.1
+-----
+
+* The resources location is different on master
+
+0.2
+---
+
+* Prepare 0.2 release
+* Fix cb-init registry key retrieval
+* Drop the OS prefix for test classes, recipes and introspections
+* Remove unused variables
+* Test that we can connect to the instance when the user is created
+* Remove merge artefacts
+* Style fix
+* Pass the user which will be created to the Powershell script
+* Fix the location of the test
+* Test that cloudbaseinit works when the user is already created
+* Fix the location of the test
+* Test that cloudbaseinit works when the user is already created
+* Style cleanup
+* Use lazy logging in util
+* Customize the passing of introspection
+* Merge
+* Pass the user which will be created to the Powershell script
+* Fix the location of the test
+* Test that cloudbaseinit works when the user is already created
+* Code refactor for the introspection routines
+* Show the name of the executing scenario
+* Fix the location of the test
+* Test that cloudbaseinit works when the user is already created
+* Move the .exe testing part in another recipe
+* Fix the resources location
+* Add rescue scenario
+* Specify the resources location for the develop branch
+* Update the executable to include all the linked libraries
+* Call pre_sysprep in prepare method
+* Don't forget to interpolate the string
+* Fix README typo
+* Test .exe scripts
+* Fix the name of the argument for setLocalScripts
+* Added sysprep reboot
+* Fixed cloudbase init service startup policy
+* Fixed glance image ref usage
+* Reset the excepthook to the original after importing all tempest libraries
+* Fixed 'recipee' typo
+* Standard logging statements
+* Save console output per instance
+* Make conf argument required
+* Better Python path retrieval
+* Better program files directory retrieval
+* Strip the content from newlines
+* Fix the Travis CI icon
+* Fix markup in README
+* Refactor the README, use restructuredText
+* Move the content from HOWTO to README
+* The service_type belongs to the instance, not to the image
+* Change the line endings of the file to LF
+* Refactor the service_type out of images into the scenario itself
+* Add a more complicated password test
+* Don't propagate the logger in runner to the default logger
+* Log the runner results to stdout and in the argus.log
+* Move metadata_type property to the base argus test
+* Use the colon delimiter for obtaining the class
+* Add test for password coming from the metadata
+* Add EC2 config userdata test
+* Don't return the result, it is not used
+* Fix the tests
+* Add the first draft of group filtering
+* Don't forget to update the production configuration
+* Add support for having multiple test cases per instance
+* metadata_type is the actual result, not a function
+* Refactor out some functions unrelated to smoke testing into cloud.util
+* Skip the password test if the underlying service is not http
+* Add ConfigDrive metadata smoke test
+* Fix the location of the recipee
+* Fix the argus.conf test locations
+* Fix the partition index
+* Add the production example of argus.conf
+* Allow userdata to not be specified
+* First step into generic parametrization and test matrix
+* Drop the dependency between the conf file and the logging
+* Handle the case where the userdata is None
+* Refactor the previous commit, by splitting the tests
+* Try to decouple the smoke tests from the underlying userdata
+* Try to decouple the tests from the underlying image
+* Fix pep8 issues
+
+0.1
+---
+
+* Use _get_default for file_log and log_format
+* Add a function for getting default values without throwing an error
+* Add os_type to image specific configuration
+* Add some support for image matrix testing
+* Refactor the use of image_ref from the conf outside of scenario
+* Infrastructure minimal refactor
+* Fix pep8 and pylint issues
+* Fix the excepthook problem by patching openstack.common.log.setup instead
+* Reset the excepthook changed by tempest
+* Add a name argument for the cached_property
+* Move Windows specific resources to a Windows location
+* Make the reporting in runner similar to unittest.TextTestRunner
+* Use .write instead of writeln when writing the status of tests
+* The main function must exist in shell.py
+* Move the running of scenarios to runner.py
+* Remove other references to cloudbaseinit
+* Change the help for --git-command
+* Rename exceptions to have Argus in name, not cloudbaseinit
+* The test result is passed in BaseArgusScenario, instead of being hardcoded
+* Add some docstrings where it counts
+* Use a TextTestResult instead
+* Call len on test's results and move the deletion of isolation creds
+* Add logging messages to scenario
+* Rewrite the scenario part, in order to support parametrization
+* Rewrite the scenario part, in order to support parametrization
+* Add travis build icon
+* Ignore .orig files left from merge
+* Argus support for pausing the process
+* Fix the previous commit
+* Rename the base class to reflect the fact that the tests are smoke tests
+* Rename generic tests to smoke tests
+* Refactor the tests structure
+* Update HOWTO
+* Add the concept of `recipee`
+* Add test for the console output
+* Add a Troubleshooting section and document the Multiple network error
+* Use the new location for the ResponseBody
+* expected_peers is already a list of peers
+* Fix the NameError
+* Support getting multiple NTP peers from the dnsmasq file
+* Drop replace_code, use git_command instead
+* Don't use flake8 anymore, it's way to hellish to use it sanely from dependencies pov
+* Make pylint happy
+* Add test to check the triggers of the w32time service
+* Dummy commit
+* Disable fixme for Pylint
+* Use the development version of pylint
+* Change the working directory to toxinidir
+* No rest_client in the latest tempest
+* Add the correct location of the new function
+* Tempest doesn't have a network_client_base anymore
+* Disable a Pylint error
+* Fix flake8 warnings and use the pylintrc in tox.ini
+* Fix flake8 and pylint warnings
+* Add a .gitattributes file
+* The hell never ceases (part 4)
+* The hell never ceases (part 3)
+* The hell never ceases (part 2)
+* The hell never ceases
+* Make hacking happy with pep8 1.5.6
+* tempest is a dependency in tox.ini
+* Use flake8 with hacking
+* Use the correct version format
+* Use develop for tox and toxinidir for running the commands
+* Try to fix Travis tests
+* Install tox in .travis file
+* Run tox in Travis
+* Configure tox
+* Fix the copyright header, it's Cloudbase Solutions, not Cloudbase-Init
+* Strip the newlines before asserting the content
+* Wait for the service to stop, not for the total number of plugins to finish
+* Remove all expected failures, let it fail!
+* Mark the password_set test as expected failure
+* Strip the newlines before asserting the content
+* Wrong list of files iterated
+* Test the content of the files created by write-files plugin
+* Fix the multipart data for cloudconfig
+* Use testtools's expectFailure
+* Fix the quote wrap
+* Fix the ridiculous quote wrap
+* Fix the command for registry key checking
+* Set the logging level on the logger itself
+* Wait for the cloudbaseinit's registry key to appear
+* Update and rename HOWTO to HOWTO.md
+* Add more notes to the HOWTO, regarding the tempest version and argus.conf
+* Fix the problem with the dns_server option for create_subnet
+* Make sure to cleanup resources properly
+* Using rmdir is enough, no need to call Powershell
+* replace_code is now a boolean flag
+* Cache exceptions in run_once and make sure to reraise them
+* Add a first draft for the HOWTO guide
+* Downgrade a log message
+* Split up the logging part in two
+* Fix the replace code commands
+* Push the first draft of code replacing
+* Add file_log to the default .conf file
+* Downgrade an exception log to an error log
+* the file_log option is inside argus namespace
+* Add support for logging to a file
+* Add a sample argus.conf file
+* Don't use the global config object from oslo
+* Add support for using our own config file
+* Mark the cloudconfig test with an expected failure
+* Add test for cloudconfig user data
+* Make sure to create a client with the default user
+* Activate Windows in cloudbaseinit conf to make sure that licensing plugin works
+* Add test for HTTPS transport for WinRM
+* Add the option to customize the transport protocol for WinRM
+* rule is already the id
+* Using setUpClass and tearDownClass is prohibited
+* Remove extra quotes and slashes
+* Don't interpolate with repr of the strings
+* Ups, remove extra character
+* Replace idiom, doesn't work well with multiple inheritance
+* abstractproperty is the only way to make this work on Python 2
+* Readd a couple of methods
+* Revert to using TEMPEST_CONF
+* Wrong variable access
+* Refactoring
+* Refactoring
+* Split installCBInit in multiple files and refactor
+* Simplify the interaction between generics and implementations
+* Don't login with password instead of username
+* Fix the order of decorators
+* Make the test framework independent on the instance's OS
+* Make the scenarios independent on the instance platform
+* Don't forget to run the command with Powershell
+* Fix the name of the method, it's run_command_verbose
+* Strip the NTP peers
+* Add test for the licensing plugin
+* Look up for 'Peer: ' instead
+* Refactor the skipUnless decoration
+* Test that the NTP server was properly configured
+* Move dnsmasq.sample where it belongs
+* Skip the NTP test if dnsmasq is not configured
+* Fix a couple of bugs with _dnsmasq_configured
+* Add a sample dnsmasq file
+* Improve the MTU test
+* Refactoring
+* Fix the test for ssh public keys
+* Rename method name
+* Test that the user belongs to a group
+* Use the predefined client for two tests
+* Fix the redirection to files
+* Test that a Powershell script is executed
+* Add test for localscripts plugin
+* Use a bigger context for Select-String
+* Look for a traceback in the cloudbaseinit logs
+* Add get_resource function
+* Switch to UNIX line endings
+* Simplify the API of _run_commands
+* Fix some bugs
+* Rename run_wsman_cmd to run_remote_cmd
+* Add support for sending a file to the remote server
+* get_private_network is not used, remove it
+* Simplify the construction of security group
+* Remove support for multiple servers, since it is not required
+* No need to remove the security groups at this point
+* Use our installCBInit.ps1 file
+* Move the file in resources
+* Add the install script for Cloudbase-Init
+* Bug fix
+* Include the resource metadata in the package
+* Use the option group under which the options are provided
+* Add a couple of additional files
+* Add custom security group rules for winrm and rdp
+* The option must be an IntOpt, not a BoolOpt
+* Add missing option
+* Update comment
+* Change the path to the tests in testr conf
+* Add a basic setup.py
+* Move the files again, so we could use pbr
+* Remove test_discover
+* Change config option to 0
+* Add some context useful for debugging
+* Add a new option, debug
+* Move the code into a new namespace, argus
+* Refactor scenarios
+* Add a Licence header
+* Add a new config file
+* Fix another wrongly named variable
+* Fix the name of the user
+* Add .gitignore
+* Use Http for the WinRM protocol
+* Fix a couple of logging problems
+* Remove an used variable
+* Forgot a return
+* assertGreaterThan does not exist
+* Add a failure decorator, used for debugging
+* Fix comparison bug
+* Use the proper name for the username field
+* Simplify retry block
+* Fix a badly named variable
+* Add first draft of the argus-ci
+* Initial commit
