@@ -282,6 +282,8 @@ class CloudbaseinitRecipe(base.BaseCloudbaseinitRecipe):
             instance_server.get("OS-EXT-AZ:availability_zone",
                                 "az-{}".format(name)))
         self._arestor_client.set_random_seed("random-seed-{}".format(name))
+        self._arestor_client.set_userdata(self._backend.userdata)
+        self._arestor_client.set_metadata(json.dumps(self._backend.metadata))
         self._arestor_client.set_uuid(instance_server["id"])
         self._arestor_client.set_uuid(name.lower())
         argus_x509_cert = [{

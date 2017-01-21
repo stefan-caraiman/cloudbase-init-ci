@@ -158,4 +158,4 @@ class BaseCloudbaseinitRecipe(base.BaseRecipe):
         self.wait_cbinit_finalization()
         LOG.info("Finished preparing instance.")
         self.get_cb_init_logs()
-        self.delete_mock_metadata()
+        #self.delete_mock_metadata()
