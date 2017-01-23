@@ -99,7 +99,7 @@ class TestPasswordPostedSmoke(BaseTestPassword):
 
     @property
     def password(self):
-        return self.recipe._arestor_client.get_password()
+        return self._recipe._arestor_client.get_password()
 
     @test_util.requires_service('http')
     def test_password_set_posted(self):

@@ -21,8 +21,8 @@ from argus.config import base as conf_base
 RESOURCES_LINK = ('https://raw.githubusercontent.com/cloudbase/'
                   'cloudbase-init-ci/master/argus/resources')
 
-IO_UPPER_TIMEOUT_MULTIPLIER = 3
-DEFAULT_UPPER_TIMEOUT = 60 * 6
+IO_UPPER_TIMEOUT_MULTIPLIER = 2
+DEFAULT_UPPER_TIMEOUT = 60 * 5
 IO_UPPER_TIMEOUT = DEFAULT_UPPER_TIMEOUT * IO_UPPER_TIMEOUT_MULTIPLIER
 
 
@@ -75,7 +75,7 @@ class ArgusOptions(conf_base.Options):
             cfg.IntOpt("io_upper_timeout", default=IO_UPPER_TIMEOUT,
                        help="Upper timeout for each command that reads or "
                             "writes to a file in the remote instance."),
-            cfg.IntOpt("retry_count", default=35,
+            cfg.IntOpt("retry_count", default=25,
                        help="The retry counts for a failing command."),
             cfg.IntOpt("retry_delay", default=10,
                        help="The number of seconds between the retries "
