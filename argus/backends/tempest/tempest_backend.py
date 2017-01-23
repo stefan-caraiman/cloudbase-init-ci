@@ -234,11 +234,12 @@ class BaseTempestBackend(base_backend.CloudBackend):
         # Delegate to the manager to reboot the instance
         return self._manager.reboot_instance(self.internal_instance_id())
 
-    def instance_password(self):
+    def instance_password(self, encoded_password):
         # Delegate to the manager to find out the instance password
         return self._manager.instance_password(
             self.internal_instance_id(),
-            self._keypair)
+            self._keypair,
+            encoded_password)
 
     def internal_instance_id(self):
         return self._server["id"]

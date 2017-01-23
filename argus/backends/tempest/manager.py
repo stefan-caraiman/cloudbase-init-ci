@@ -122,7 +122,7 @@ class APIManager(object):
             self.servers_client,
             instance_id, 'ACTIVE')
 
-    def instance_password(self, instance_id, keypair):
+    def instance_password(self, instance_id, keypair, encoded_password=None):
         """Get the password posted by the given instance.
 
         :param instance_id:
@@ -132,8 +132,10 @@ class APIManager(object):
             A key-pair whose private key can be used to decrypt
             the password.
         """
-        encoded_password = self.servers_client.show_password(
-            instance_id)
+        if not encoded_password:
+            encoded_password = self.servers_client.show_password(
+                instance_id)
+        LOG.info("encoded pass is: %s", encoded_password)
         with _create_tempfile(keypair.private_key) as tmp:
             return util.decrypt_password(
                 private_key=tmp,

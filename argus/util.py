@@ -235,7 +235,7 @@ def get_public_keys():
 
     Used by the Cloudbase-Init tests.
     """
-    return get_resource("public_keys").splitlines()
+    return get_resource("public_keys").strip().rstrip().splitlines()
 
 
 def get_certificate():

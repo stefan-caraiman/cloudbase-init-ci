@@ -14,6 +14,7 @@
 #    under the License.
 
 import binascii
+import json
 import operator
 import os
 import time
@@ -99,7 +100,9 @@ class TestPasswordPostedSmoke(BaseTestPassword):
 
     @property
     def password(self):
-        return self._recipe._arestor_client.get_password()
+        arestor_password = self._recipe._arestor_client.get_password()
+        #self._backend.instance_password(encoded_password={'password':arestor_password})
+        return util.decrypt_password("/root/argus-keys/key2", arestor_password)
 
     @test_util.requires_service('http')
     def test_password_set_posted(self):
@@ -330,7 +333,9 @@ class TestsBaseSmoke(TestCreatedUser,
         authorized_keys = self._introspection.get_instance_keys_path()
         public_keys = self._introspection.get_instance_file_content(
             authorized_keys)
-        self.assertEqual(set(self._backend.public_key().splitlines()),
+        arestor_keys = self._recipe._arestor_client.get_ssh_pubkeys()
+        arestor_keys_sanitized = json.loads(arestor_keys).values()
+        self.assertEqual(set(arestor_keys_sanitized),
                          set(_parse_ssh_public_keys(public_keys)))
 
     def test_mtu(self):
