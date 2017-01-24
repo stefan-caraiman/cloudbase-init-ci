@@ -118,7 +118,7 @@ def _prepare_argument_parser():
                         help="URL to argus resources.")
     parser.add_argument("-p", "--parallel", type=int,
                         help="many processes to use in parallel.")
-    parser.add_argument("-l", "--local",
+    parser.add_argument("-l", "--local", default="/home/ubuntu/argus-stefan/cloudbase-init-ci/",
                         help="Local git repository with all the argus files.")
     parser.add_argument("-s", "--separate", action="store_true",
                         help="Make sepatate log files for each scenario.")

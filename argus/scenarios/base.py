@@ -187,3 +187,4 @@ class BaseScenario(unittest.TestCase):
         """
         if cls.backend:
             cls.backend.cleanup()
+        #cls.recipe.delete_mock_metadata()

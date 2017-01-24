@@ -446,6 +446,19 @@ class BaseNextLogonRecipe(CloudbaseinitRecipe):
         self._cbinit_conf.set_conf_value(
             name="first_logon_behaviour",
             value=self.behaviour)
+        self._cbinit_conf.set_conf_value(
+            name="plugins",
+            value="cloudbaseinit.plugins.windows.createuser."
+                  "CreateUserPlugin,"
+                  "cloudbaseinit.plugins.windows.setuserpassword."
+                  "SetUserPasswordPlugin,"
+                  "cloudbaseinit.plugins.windows.winrmlistener."
+                  "ConfigWinRMListenerPlugin")
+
+
+class AlwaysChangeLogonPasswordRecipeWinrmCertificate(BaseNextLogonRecipe):
+    # NOTE: to be implemented
+    pass   
 
 
 class AlwaysChangeLogonPasswordRecipe(BaseNextLogonRecipe):
