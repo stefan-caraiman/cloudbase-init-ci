@@ -222,3 +222,12 @@ class TestTrimPlugin(base.BaseTestCase):
     def test_trim_is_set(self):
         value = self._introspection.get_trim_state()
         self.assertTrue(value)
+
+
+class TestPageFilePlugin(base.BaseTestCase):
+
+    def test_page_file_set(self):
+        expected = r"C:\pagefile.sys 0 0"
+        result = self._introspection.get_swap_status(
+            expected_swap_status=expected)
+        self.assertTrue(result)

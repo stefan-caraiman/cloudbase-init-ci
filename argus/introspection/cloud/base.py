@@ -84,9 +84,10 @@ class CloudInstanceIntrospection(base.BaseInstanceIntrospection):
         """Get IP available instance network adapters."""
 
     @abc.abstractmethod
-    def get_swap_status(self):
+    def get_swap_status(self, expected_swap_status):
         """Get whether the swap memory is enabled or not.
 
         :returns: True if swap memory is enabled, False if not.
+        :arg expected_swap_status: The expected swap status of the memory
         :rtype: bool
         """

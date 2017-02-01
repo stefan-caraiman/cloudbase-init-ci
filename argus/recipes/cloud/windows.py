@@ -572,7 +572,24 @@ class CloudbaseinitEnableTrim(CloudbaseinitRecipe):
                   ".TrimConfigPlugin")
 
 
-class CloudbaseinitIndependentPlugins(CloudbaseinitEnableTrim):
+class CloudbaseinitPageFilePlugin(CloudbaseinitEnableTrim):
+    """Recipe for testing the PageFile plugin"""
+
+    def prepare_cbinit_config(self, service_type):
+        super(CloudbaseinitPageFilePlugin, self).prepare_cbinit_config(
+            service_type)
+        LOG.info("Injecting page file options in the config file.")
+
+        self._cbinit_unattend_conf.set_conf_value(
+            name="page_file_volume_labels", value="Temporary Storage")
+        self._cbinit_unattend_conf.set_conf_value(
+            name="page_file_volume_mount_points", value="C:\\")
+        self._cbinit_unattend_conf.set_conf_value(
+            name="plugins",
+            value="cloudbaseinit.plugins.windows.pagefiles.PageFilesPlugin")
+
+
+class CloudbaseinitIndependentPlugins(CloudbaseinitPageFilePlugin):
     """Recipe for independent plugins."""
 
 
