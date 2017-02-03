@@ -326,6 +326,14 @@ class InstanceIntrospection(base.CloudInstanceIntrospection):
             command, command_type=util.CMD)
         return "= 0" in stdout
 
+    def get_power_setting_value(self):
+        expected_output = "0x0000007b"  # hex of 123
+        command = ('powercfg.exe -query SCHEME_CURRENT SUB_VIDEO VIDEOIDLE'
+                   ' | findstr /R /C:"Current AC Power Setting Index"')
+        stdout = self.remote_client.run_command_verbose(
+            command, command_type=util.CMD)
+        return expected_output in stdout
+
     def get_service_triggers(self, service):
         """Get the triggers of the given service.
 
